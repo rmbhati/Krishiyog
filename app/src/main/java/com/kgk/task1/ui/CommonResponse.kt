@@ -3,12 +3,23 @@ package com.kgk.task1.ui
 import com.google.gson.annotations.SerializedName
 
 data class ListData(
-    @SerializedName("EMP_ID") val empId: String,
-    @SerializedName("FULL_NAME") val empName: String,
-    @SerializedName("PHOTO_PATH") val empPhoto: String,
-    @SerializedName("SUBAREA_ID") val subAreaId: String,
-    @SerializedName("CSC_ID") val cscId: String,
-    @SerializedName("CSC_NAME") val cscName: String,
-    @SerializedName("CURRENCY") val currency: String,
+    @SerializedName("author") val author: String,
+    @SerializedName("name") val name: String,
+    @SerializedName("avatar") val avatar: String,
+    @SerializedName("url") val url: String,
+    @SerializedName("description") val description: String,
+    @SerializedName("language") val language: String,
+    @SerializedName("languageColor") val languageColor: String,
+    @SerializedName("stars") val stars: String,
+    @SerializedName("forks") val forks: String,
+    @SerializedName("currentPeriodStars") val currentPeriodStars: String,
+    @SerializedName("builtBy") val builtBy: List<BuildByData>,
 )
+
+data class BuildByData(
+    @SerializedName("href") val href: String,
+    @SerializedName("username") val username: String,
+    @SerializedName("avatar") val avatar: String,
+
+    )
 

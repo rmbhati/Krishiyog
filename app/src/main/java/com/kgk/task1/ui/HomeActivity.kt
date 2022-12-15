@@ -16,6 +16,7 @@ class HomeActivity : BaseActivity() {
     override fun initView() {
         activityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         activityBinding.viewmodel = viewModel
+        dialog = CustomProgress.createDialog(this, "Loading")
         viewModel.fetchingData.observe(this) { showLoading(it) }
         viewModel.errorData.observe(this) { onFailed(it) }
         viewModel.listData.observe(this) { onSuccess(it) }
