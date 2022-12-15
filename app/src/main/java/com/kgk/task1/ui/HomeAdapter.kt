@@ -2,6 +2,7 @@ package com.kgk.task1.ui
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -29,10 +30,19 @@ class HomeAdapter(private val context: Context, private val dataList: List<ListD
             .into(holder.itemView.image)
         holder.itemView.name.text = data.name
         holder.itemView.author.text = data.author
-
+        holder.itemView.description.text = data.description
+        holder.itemView.lang.text = data.language
+        holder.itemView.star.text = data.stars
+        holder.itemView.fork.text = data.forks
+        if (data.showHide) {
+            holder.itemView.showHide.visibility = View.VISIBLE
+        } else {
+            holder.itemView.showHide.visibility = View.GONE
+        }
 
         holder.itemView.setOnClickListener {
-
+            data.showHide = !data.showHide
+            notifyDataSetChanged()
         }
     }
 

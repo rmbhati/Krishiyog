@@ -3,6 +3,7 @@ package com.kgk.task1.ui
 import com.google.gson.annotations.SerializedName
 
 data class ListData(
+    var showHide: Boolean,
     @SerializedName("author") val author: String,
     @SerializedName("name") val name: String,
     @SerializedName("avatar") val avatar: String,
