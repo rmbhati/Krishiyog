@@ -1,12 +1,16 @@
 package com.kgk.task1.ui
 
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kgk.task1.R
 import com.kgk.task1.base.BaseActivity
 import com.kgk.task1.databinding.ActivityMainBinding
 import com.kgk.task1.utils.CustomProgress
 import com.kgk.task1.utils.toast
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class HomeActivity : BaseActivity() {
     private lateinit var activityBinding: ActivityMainBinding
@@ -35,7 +39,13 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun onSuccess(response: List<ListData>) {
-        toast(response.toString())
+        val layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
+        val dividerItemDecoration =
+            DividerItemDecoration(recyclerView.context, layoutManager.getOrientation())
+        recyclerView.addItemDecoration(dividerItemDecoration)
+        val adapter = HomeAdapter(this, response)
+        recyclerView.adapter = adapter
     }
 
     private fun onFailed(error: String) {
