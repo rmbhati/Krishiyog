@@ -14,8 +14,10 @@ class HomeViewModel(private val api: APIMethods) : BaseViewModel() {
     var errorData: MutableLiveData<String> = MutableLiveData()
 
     @SuppressLint("CheckResult")
-    fun getListData() {
-        emitListData(true)
+    fun getListData(b: Boolean) {
+        if(b){
+            emitListData(true)
+        }
         val url = APIEndPoints.LIVE_URL
         api.getData(url)
             .observeOn(AndroidSchedulers.mainThread())

@@ -27,7 +27,8 @@ class HomeActivity : BaseActivity() {
     }
 
     override fun initData() {
-        viewModel.getListData()
+        viewModel.getListData(true)
+        refresh.setOnRefreshListener { viewModel.getListData(false) }
     }
 
     private fun showLoading(status: Boolean) {
@@ -46,6 +47,7 @@ class HomeActivity : BaseActivity() {
         recyclerView.addItemDecoration(dividerItemDecoration)
         val adapter = HomeAdapter(this, response)
         recyclerView.adapter = adapter
+        refresh.isRefreshing = false
     }
 
     private fun onFailed(error: String) {
