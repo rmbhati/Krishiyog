@@ -11,7 +11,6 @@ import com.kgk.task1.base.BaseActivity
 import com.kgk.task1.databinding.ActivityMainBinding
 import com.kgk.task1.utils.CustomProgress
 import com.kgk.task1.utils.PrefKeys
-import com.kgk.task1.utils.toast
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
