@@ -1,5 +1,6 @@
 package com.kgk.task1.ui
 
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,6 +34,7 @@ class HomeActivity : BaseActivity() {
 
         viewModel.getListData(true)
         refresh.setOnRefreshListener { viewModel.getListData(false) }
+        retry.setOnClickListener { viewModel.getListData(true) }
     }
 
     private fun showLoading(status: Boolean) {
@@ -44,13 +46,15 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun onSuccess(response: List<ListData>) {
-
+        retry.visibility = View.GONE
         val adapter = HomeAdapter(this, response)
         recyclerView.adapter = adapter
         refresh.isRefreshing = false
     }
 
     private fun onFailed(error: String) {
-        toast(error)
+        retry.visibility = View.VISIBLE
+        recyclerView.adapter = null
+        refresh.isRefreshing = false
     }
 }
